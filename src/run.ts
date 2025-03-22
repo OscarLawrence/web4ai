@@ -19,7 +19,7 @@ const test = async () => {
         github: { url: 'https://github.com' },
 
     }, {
-        dist: './Data',
+        dist: './test-results',
         html: true,
     })
 

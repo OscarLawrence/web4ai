@@ -2,17 +2,25 @@
 
 `web4ai` is an npm package designed to fetch and process web pages using Puppeteer. It provides a flexible and configurable way to capture HTML, PDF, screenshots, and markdown from web pages.
 
+[![npm version](https://badge.fury.io/js/web4ai.svg)](https://badge.fury.io/js/web4ai)
+[![Build Status](https://travis-ci.org/OscarLawrence/web4ai.svg?branch=master)](https://travis-ci.org/OscarLawrence/web4ai)
+[![GitHub license](https://img.shields.io/github/license/OscarLawrence/web4ai.svg)](https://github.com/OscarLawrence/web4ai/blob/master/LICENSE)
+
 ## Installation
 
-To install the package, run:
+Install the package using npm:
 
-```bash
+```sh
 npm install web4ai
 ```
 
-## Usage
+Or using pnpm:
 
-Here's an example of how to use `web4ai`:
+```sh
+pnpm add web4ai
+```
+
+## Usage
 
 ```typescript
 import { loadWeb } from 'web4ai';
@@ -31,74 +39,37 @@ loadWeb(context).then((responses) => {
 });
 ```
 
-## Configuration
+## Documentation
 
-The `web4ai` package allows you to customize its behavior through a configuration object. Below are the default settings and possible configurations:
+For detailed documentation, please refer to the [API Documentation](https://github.com/OscarLawrence/web4ai/wiki).
 
-### Default Configuration
+### Adding Documentation
 
-```typescript
-export const DEFAULT_CONFIG: ConfigI = {
-	viewPort: {
-		width: 375,
-		height: 667,
-	},
-	gotoOptions: {},
-	pdf: {
-		format: 'A4',
-		waitForFonts: true,
-	},
-	screenshot: {
-		captureBeyondViewport: true,
-		optimizeForSpeed: true,
-	},
-	markdown: {
-		pdf: {
-			format: 'A4',
-		},
-	},
-	html: false,
-};
-```
+To add or update the documentation, follow these steps:
 
-### Custom Configuration
+1. Go to the [wiki](https://github.com/OscarLawrence/web4ai/wiki) of the repository.
+2. Create a new page or edit an existing page.
+3. Use Markdown to format the documentation.
+4. Save the changes.
 
-You can override the default settings by passing a partial configuration object to the `loadWeb` function:
+## Contributing
 
-```typescript
-const customConfig = {
-	viewPort: {
-		width: 1920,
-		height: 1080,
-	},
-	html: true,
-};
+Contributions are welcome! Please read the [contribution guidelines](https://github.com/OscarLawrence/web4ai/blob/master/CONTRIBUTING.md) first.
 
-loadWeb(context, customConfig).then((responses) => {
-	console.log(responses);
-});
-```
+## License
 
-### Configuration Options
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/OscarLawrence/web4ai/blob/master/LICENSE) file for details.
 
-- `viewPort`: Sets the viewport size for the browser.
-- `gotoOptions`: Options to pass to the `page.goto` method.
-- `pdf`: Configuration for generating PDF files.
-- `screenshot`: Configuration for capturing screenshots.
-- `markdown`: Configuration for generating markdown from PDF.
-- `html`: Boolean to enable or disable HTML capture.
+## Support
 
-## Contribution
+If you like this project, help us maintain it and create more awesome projects by donating:
 
-We welcome contributions to the `web4ai` project. To contribute, please follow these steps:
+[donorbox](https://donorbox.org/vindao)
 
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Make your changes.
-4. Commit your changes (`git commit -am 'Add new feature'`).
-5. Push to the branch (`git push origin feature-branch`).
-6. Create a new Pull Request.
+[Paypal](https://www.paypal.com/pool/9djs5G3kWz?sr=wccr)
 
-## Donations
+![Paypal-qr code](Data/qrcode.png)
 
-If you find this project useful and would like to support its development, please consider making a donation. [Donation Placeholder]
+## Author
+
+Vindao - [contact@vindao.io](mailto:contact@vindao.io)
