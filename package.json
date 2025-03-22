@@ -1,6 +1,6 @@
 {
 	"name": "web4ai",
-	"version": "0.0.12",
+	"version": "0.0.13",
 	"description": "An easy-to-use interface to convert any website into Ai ready data, like Mardown, Pdf, screenshots and more.",
 	"exports": {
 		".": {
