@@ -49,7 +49,7 @@ export const DEFAULT_CONFIG: ConfigI = {
 		waitForFonts: true,
 	},
 	screenshot: {
-		captureBeyondViewport: false,
+		captureBeyondViewport: true,
 		optimizeForSpeed: true,
 	},
 	markdown: {
