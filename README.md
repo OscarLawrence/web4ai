@@ -1,156 +1,104 @@
-# puppeteer2pdf
+# web4ai
 
-`puppeteer2pdf` is an npm package that leverages Puppeteer to generate PDFs and screenshots from web pages. This package allows you to automate the process of capturing web content and saving it as PDF or image files.
-
-## Table of Contents
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Configuration](#configuration)
-- [API](#api)
-- [Examples](#examples)
-- [Contributing](#contributing)
-- [License](#license)
+`web4ai` is an npm package designed to fetch and process web pages using Puppeteer. It provides a flexible and configurable way to capture HTML, PDF, screenshots, and markdown from web pages.
 
 ## Installation
 
-To install the package, use npm or yarn:
+To install the package, run:
 
 ```bash
-npm install puppeteer2pdf
-```
-
-or
-
-```bash
-yarn add puppeteer2pdf
+npm install web4ai
 ```
 
 ## Usage
 
-Here's a basic example of how to use `puppeteer2pdf`:
+Here's an example of how to use `web4ai`:
 
 ```typescript
-import { loadPdfs } from 'puppeteer2pdf';
+import { loadWeb } from 'web4ai';
 
-const settings = {
+const context = {
 	page1: {
 		url: 'https://example.com',
-	},
-	page2: {
-		url: 'https://example.org',
 		run: async (page) => {
 			// Custom script to run on the page
 		},
 	},
 };
 
-loadPdfs(settings).then((results) => {
-	console.log('PDFs and screenshots generated:', results);
+loadWeb(context).then((responses) => {
+	console.log(responses);
 });
 ```
 
 ## Configuration
 
-The `loadPdfs` function accepts an optional configuration object to customize the PDF and screenshot generation:
+The `web4ai` package allows you to customize its behavior through a configuration object. Below are the default settings and possible configurations:
+
+### Default Configuration
 
 ```typescript
-const config = {
-	pdfOptions: {
+export const DEFAULT_CONFIG: ConfigI = {
+	viewPort: {
+		width: 375,
+		height: 667,
+	},
+	gotoOptions: {},
+	pdf: {
 		format: 'A4',
+		waitForFonts: true,
 	},
-	screenshotOptions: {
-		fullPage: true,
+	screenshot: {
+		captureBeyondViewport: false,
+		optimizeForSpeed: true,
 	},
-};
-```
-
-## API
-
-### `loadPdfs(settings: NestedSettingsI, dist?: string, config?: ConfigI): Promise<NestedResultsI>`
-
-- `settings`: An object defining the pages to process.
-- `dist`: The directory to save the generated files. Defaults to `./PDFs`.
-- `config`: Configuration options for PDF and screenshot generation.
-
-### Types
-
-#### `SettingI`
-
-- `url`: The URL of the page to fetch.
-- `run`: An optional function to run on the page.
-
-#### `ResponseI`
-
-- `pdf`: The PDF data of the page.
-- `screenshot`: The screenshot data of the page.
-- `error`: An error message if the page processing failed.
-
-#### `NestedSettingsI`
-
-An object where keys are page identifiers and values are `SettingI` or nested `NestedSettingsI`.
-
-#### `NestedResultsI`
-
-An object where keys are page identifiers and values are `ResponseI` or nested `NestedResultsI`.
-
-#### `ConfigI`
-
-- `pdfOptions`: Options for generating PDFs.
-- `screenshotOptions`: Options for taking screenshots.
-
-## Examples
-
-### Basic Example
-
-```typescript
-import { loadPdfs } from 'puppeteer2pdf';
-
-const settings = {
-	homepage: {
-		url: 'https://example.com',
-	},
-};
-
-loadPdfs(settings).then((results) => {
-	console.log('Generated files:', results);
-});
-```
-
-### Advanced Example
-
-```typescript
-import { loadPdfs } from 'puppeteer2pdf';
-
-const settings = {
-	homepage: {
-		url: 'https://example.com',
-		run: async (page) => {
-			await page.evaluate(() => {
-				document.querySelector('h1').style.color = 'red';
-			});
+	markdown: {
+		pdf: {
+			format: 'A4',
 		},
 	},
+	html: false,
+};
+```
+
+### Custom Configuration
+
+You can override the default settings by passing a partial configuration object to the `loadWeb` function:
+
+```typescript
+const customConfig = {
+	viewPort: {
+		width: 1920,
+		height: 1080,
+	},
+	html: true,
 };
 
-const config = {
-	pdfOptions: {
-		format: 'A4',
-	},
-	screenshotOptions: {
-		fullPage: true,
-	},
-};
-
-loadPdfs(settings, './output', config).then((results) => {
-	console.log('Generated files:', results);
+loadWeb(context, customConfig).then((responses) => {
+	console.log(responses);
 });
 ```
 
-## Contributing
+### Configuration Options
 
-Contributions are welcome! Please read the [contributing guidelines](CONTRIBUTING.md) first.
+- `viewPort`: Sets the viewport size for the browser.
+- `gotoOptions`: Options to pass to the `page.goto` method.
+- `pdf`: Configuration for generating PDF files.
+- `screenshot`: Configuration for capturing screenshots.
+- `markdown`: Configuration for generating markdown from PDF.
+- `html`: Boolean to enable or disable HTML capture.
 
-## License
+## Contribution
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+We welcome contributions to the `web4ai` project. To contribute, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes.
+4. Commit your changes (`git commit -am 'Add new feature'`).
+5. Push to the branch (`git push origin feature-branch`).
+6. Create a new Pull Request.
+
+## Donations
+
+If you find this project useful and would like to support its development, please consider making a donation. [Donation Placeholder]
